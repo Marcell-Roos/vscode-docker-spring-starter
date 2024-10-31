@@ -1,0 +1,16 @@
+version: '3.8'
+services:
+  spring:
+    build: .
+    container_name: spring-demo
+    entrypoint: /bin/sh -c "while sleep 1; do :; done"
+    command: ["./mvnw", "spring-boot:run"]
+    volumes:
+      - .:/app
+    ports:
+      - "8081:8081"
+    environment:
+      - JAVA_HOME=/docker-java-home
+volumes:
+  vscode:
+    external: true
